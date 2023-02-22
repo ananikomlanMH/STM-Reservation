@@ -1,0 +1,67 @@
+:root{
+
+    // selection text
+    --selection-background : #f47e33;
+    --selection-text : #fff;
+
+    // scroll bar color
+    --scrool-background : #fff;
+    --scrool-bar : #d5e3ec;
+
+    // general coloration
+    --primary-color : #f47e33;
+    --primary-color-contrast : #e87830;
+    --white-color : #fff;
+
+    --ss-primary-color : var(--primary-color) !important;
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+
+    // body background
+    --body-background : #fff;
+    --body-font-color : #121c42;
+    --body-font-color-saturate : #121c42;
+
+    // login
+    --login-background : #f7fafb;
+    --login-form-background : #ffffff8f;
+    --login-form-border : #bfbfbf;
+    --login-form-shadow : #b9b9b980;
+    --login-form-error : #dc3545;
+    --login-form-icon : #bfbfbf;
+    --login-form-placeholder : #bfbfbf;
+
+    --add-btn-background : #f47e33da;
+
+}
+
+.light{
+
+    // selection text
+    --selection-background : #f47e33;
+    --selection-text : #fff;
+
+    // scroll bar color
+    --scrool-background : #fff;
+    --scrool-bar : #d5e3ec;
+
+    // general coloration
+    --primary-color : #f47e33;
+    --primary-color-contrast : #e87830;
+    --white-color : #fff;
+
+    // login
+    --login-background : #f7fafb;
+    --login-form-background : #ffffff8f;
+    --login-form-border : #bfbfbf;
+    --login-form-shadow : #b9b9b980;
+    --login-form-error : #dc3545;
+    --login-form-icon : #bfbfbf;
+    --login-form-placeholder : #bfbfbf;
+
+
+    --add-btn-background : #f47e33da;
+}

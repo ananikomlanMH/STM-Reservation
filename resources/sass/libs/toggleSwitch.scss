@@ -1,0 +1,97 @@
+.vc-toggle-container * {
+    font-family: "Poppins", serif;
+    -webkit-transition: 0.15s ease-out;
+    -moz-transition: 0.15s ease-out;
+    -o-transition: 0.15s ease-out;
+    transition: 0.15s ease-out;
+}
+
+.vc-small-switch {
+    width: 73px;
+    height: 30px;
+}
+
+.vc-small-switch {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.vc-switch-input {
+    position: absolute;
+    transform: translate3d(5px, 5px, 0);
+    opacity: 0;
+}
+
+.vc-switch-label {
+    position: relative;
+    display: block;
+    height: inherit;
+    font-size: 10px;
+    background: #0000000f;
+    border-radius: inherit;
+}
+
+.vc-switch-label:before,
+.vc-switch-label:after {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    line-height: 1.1;
+}
+
+.vc-switch-label:before {
+    content: attr(data-off);
+    right: 11px;
+    color: #6c6c6c;
+}
+
+.vc-switch-label:after {
+    content: attr(data-on);
+    left: 11px;
+    color: white;
+    opacity: 0;
+}
+
+.vc-switch-input:checked ~ .vc-switch-label {
+    background: var(--primary-color);
+}
+.vc-switch-input:checked ~ .vc-switch-label:before {
+    opacity: 0;
+}
+.vc-switch-input:checked ~ .vc-switch-label:after {
+    opacity: 1;
+}
+
+.vc-switch-handle {
+    position: absolute !important;
+    top: 6px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.vc-switch-handle:before {
+    content: "";
+    top: 50%;
+    left: 50%;
+    position: absolute !important;
+    margin: -6px 0 0 -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+}
+
+.vc-switch-label:active ~ .vc-switch-handle, .vc-switch-handle:active {
+    width: 30px;
+}
+
+.vc-switch-input:checked ~ .vc-switch-handle {
+    left: unset;
+    right: 5px;
+}
