@@ -99,6 +99,9 @@
                                         <a data-url="{{ route('reservation.editForm', ['token' => $params['token'], 'id' =>$reservation->id]) }}"
                                            class="JS_Call_Url_Get_Form"><i class="fi-rr-edit"></i>Editer</a></li>
                                     <li>
+                                        <a target="_blank" data-turbolinks="false" href="{{ route('reservation.print', ['token' => $params['token'], 'id' =>$reservation->id]) }}"
+                                           ><i class="fi-rr-print"></i>Imprimer</a></li>
+                                    <li>
                                         <form action="{{ route('reservation.delete') }}" method="post"
                                               class="deleteForm"
                                               data-content="cette donnée">

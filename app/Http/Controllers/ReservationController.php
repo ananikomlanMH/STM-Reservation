@@ -12,6 +12,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use MongoDB;
+use PDF;
+
 
 class ReservationController extends Controller
 {
@@ -115,17 +117,18 @@ class ReservationController extends Controller
             abort(404);
         }
         $reservation = Reservation::find($id);
-        $pdf = PDF::loadView('approvisionnement.print.bonCommande',
-            [compact('reservation')],
+
+        $pdf = PDF::loadView('reservations.print',
+            ['params'=> compact('reservation', 'token')],
             [],
             [
                 'default_font' => 'poppins',
-                'author' => 'DAFTARI',
+                'author' => 'STM TRANSPORT',
                 'format' => 'A4',
-                'margin_left' => 0,
-                'margin_right' => 0,
-                'margin_top' => 40,
-                'margin_bottom' => 25,
+                'margin_left' => 2,
+                'margin_right' => 2,
+                'margin_top' => 2,
+                'margin_bottom' => 2,
                 'margin_header' => 0,
                 'margin_footer' => 0,
                 'custom_font_dir'  => base_path('public/vendors/font'), // don't forget the trailing slash!
@@ -139,7 +142,7 @@ class ReservationController extends Controller
                 ]
             ]);
 
-        return $pdf->stream('BON DE COMMANDE N°'. $mouvementStock->code .'.pdf');
+        return $pdf->stream('BILLET RESERVATION N°'. $reservation->numBillet .'.pdf');
     }
 
     public function editForm($token,$id)
