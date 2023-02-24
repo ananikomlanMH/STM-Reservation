@@ -11,6 +11,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use MongoDB;
 use PDF;
 
@@ -92,7 +93,7 @@ class ReservationController extends Controller
         $date = new \DateTime("@".strtotime($data['datedepart']));
         $date = $date->getTimestamp();
         $data['datedepart'] = new MongoDB\BSON\UTCDateTime($date*1000);
-        $data['agent'] = "Anani Komlan";
+        $data['agent'] = Auth::user()->name;
         $data['trajet'] = $montant[0];
         $data['montant'] = (int)str_replace(" ", '', explode(" FCFA)", $montant[1])[0]);
         $query = Reservation::create($data);

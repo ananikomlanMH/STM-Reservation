@@ -1336,9 +1336,17 @@ body:has(.login_container){
         cursor: pointer;
         border-radius: 3px;
         background: var(--primary-color);
+        transition: var(--tran-03);
 
         &:hover{
             background: var(--primary-color-contrast);
+        }
+
+        &:disabled{
+            background: #e2e2e2;
+            border: 1px solid #ddd;
+            color: #c6c6c6;
+            cursor: not-allowed;
         }
     }
 

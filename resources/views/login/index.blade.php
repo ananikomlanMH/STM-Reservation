@@ -1,4 +1,5 @@
 @php
+    header("Turbolinks-Location: /login");
     $form = (new \App\Helpers\FormHelper\Form());
 @endphp
 <!DOCTYPE html>
@@ -22,7 +23,8 @@
 <body>
 <div class="login_container">
     <div class="login">
-        <form>
+        <form action="" id="login__form" method="post">
+            @csrf
             <h1>Connexion</h1>
             <hr>
             <p style="font-weight: 600;"><span style="color:var(--primary-color);">STM</span> TRANSPORT VOYAGEUR</p>
@@ -31,7 +33,7 @@
 
             <div class="checkbox tiny rounded-22">
                 <div class="checkbox-container">
-                    <input id="checkbox-default" type="checkbox" />
+                    <input id="checkbox-default" name="remember" type="checkbox" />
                     <div class="checkbox-checkmark"></div>
                 </div>
                 <label for="checkbox-default">Rester connecter</label>

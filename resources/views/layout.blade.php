@@ -104,26 +104,26 @@
             </ul>
         </li>
 
-        <li class="{{ $params['active_link'] === 'approvisionnement' ? 'active' : '' }}">
-            <a href="{{ route('home.index') }}">
+        <li class="{{ $params['active_link'] === 'settings' ? 'active' : '' }}">
+            <a href="{{ route('users.index') }}">
                 <i class="fi-rr-settings"></i>
                 <span class="link_name">Paramètres</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="{{ route('home.index') }}">Paramètres</a></li>
+                <li><a class="link_name" href="{{ route('users.index') }}">Paramètres</a></li>
             </ul>
         </li>
 
-        <li>
+        <li style="border-bottom: none !important;">
             <div class="profile-details">
                 <div class="profile-content">
                     <img src="/vendors/images/profileDefault.png" alt="profileImg">
                 </div>
                 <div class="name-job">
-                    <div class="profile_name">Anani komlan...</div>
+                    <div class="profile_name">{{ \App\Helpers\TextHelpers\Text::Excerpt(\Illuminate\Support\Facades\Auth::user()->name, 10) }}</div>
                     <div class="job">Administrator</div>
                 </div>
-                <i class='fi-rr-sign-out-alt log_out' style="min-width: 50px;"></i>
+                <i id="log__out" data-url="{{ route("logout") }}" class='fi-rr-sign-out-alt log_out' style="min-width: 50px;"></i>
             </div>
         </li>
     </ul>

@@ -2,7 +2,7 @@ import carouselCustomers from "../lib/CarouselCustomers";
 
 require('../libs/bootstrap');
 import NotificationToast from "../lib/NotificationToast";
-import CustomConfirm from "../lib/CustomConfirm";
+import {CustomConfirm, CustomConfirmLogOut} from "../lib/CustomConfirm";
 import config from "../lib/config";
 import autoComplete from "@tarekraafat/autocomplete.js";
 import formControl from "../lib/FormControl";
@@ -87,7 +87,7 @@ document.addEventListener("turbolinks:load", function () {
 
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector("#close-nav");
-    sidebarBtn.addEventListener("click", () => {
+    sidebarBtn?.addEventListener("click", () => {
         sidebar.classList.toggle("close")
         menuBtnChange()
     });
@@ -451,6 +451,55 @@ document.addEventListener("turbolinks:load", function () {
                 tabsContent.querySelector('.ctn' + element.dataset.id).classList.add('active')
             });
         });
+    }
+
+    let log__out = document.querySelector("#log__out")
+    if(log__out !== null){
+        log__out.addEventListener("click", (e) => {
+            let url = log__out.dataset.url
+            CustomConfirmLogOut(url)
+        })
+    }
+
+    let login__form = document.querySelector("#login__form")
+    if(login__form !== null){
+        let btn = login__form.querySelector("button")
+        btn.addEventListener("click", (e) => {
+            e.preventDefault()
+            let payload = new FormData(login__form)
+            let url = login__form.action
+            let formControlResult = formControl(login__form, payload)
+            btn.setAttribute("disabled", "")
+            if (formControlResult === true) {
+                fetch(url, {
+                    method: "POST",
+                    body: payload,
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        Turbolinks.visit(data?.redirection + window.location.search)
+                        document.addEventListener("turbolinks:load", function () {
+                            if (data !== undefined) {
+                                NotificationToast(data.type, data.message)
+                                setTimeout(() => { //remove data after 500ms
+                                    data = undefined;
+                                }, 500);
+                            }
+                        })
+                    })
+                    .catch(err => {
+                        btn.removeAttribute("disabled")
+                        NotificationToast("error", "Erreur XHR: " + err)
+                    });
+                return true
+            }
+            setTimeout(() => {
+                btn.removeAttribute("disabled")
+            }, 1000)
+        })
+        login__form.addEventListener("submit", (e) => {
+            btn.click()
+        })
     }
 })
 
