@@ -9498,6 +9498,10 @@ td .input::-webkit-outer-spin-button, td .input::-webkit-inner-spin-button {
   overflow: hidden !important;
 }
 
+.form_2 .field .input-area {
+  height: 46px !important;
+}
+
 .checkbox, .radio {
   line-height: 0;
 }

@@ -2,10 +2,19 @@
 
 @section('title', 'Planning')
 
-
+@php
+$form = new \App\Helpers\FormHelper\Form();
+@endphp
 @section('content')
     <section class="home-section">
-        <div class="link">Planning</div>
+        <div class="d-flex gap-2" style="align-items: center; justify-content: space-between">
+            <div class="link">Planning</div>
+
+            <form action="" class="d-flex gap-1 form_2 w-375" method="get">
+                {!! $form->getInput("date", "date-picker-two", "q", "Date depart", null, request('q', date('Y-m-d')), "noEmpty", 200) !!}
+                <button class="btn-primary" type="submit">Filtrer <i class="fi-rr-filter"></i> </button>
+            </form>
+        </div>
 
         <div class="customers-favorites">
             <!-- Slider main container -->
